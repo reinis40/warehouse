@@ -20,7 +20,7 @@ function authenticateUser($access_code): ?array
 }
 function printMenu()
 {
-    echo "Warehouse Item Management\n";
+    echo "Warehouse\n";
     echo "1. Add new item\n";
     echo "2. Update item quantity\n";
     echo "3. Display all items\n";
@@ -74,7 +74,7 @@ function updateItemQuantity($userID)
 }
 function displayAllLogs()
 {
-    // Read existing log data from file
+
     $jsonData = file_get_contents('logs.json');
     $logData = json_decode($jsonData, true);
 
