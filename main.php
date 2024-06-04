@@ -50,7 +50,7 @@ function addItem($userID)
 function updateItemQuantity($userID)
 {
     $id = (int)readline("Enter item ID to update: ");
-    $items = WarehouseItem::loadItems(); // Get all items
+    $items = WarehouseItem::loadItems();
     $item = getItemById($items, $id);
     if ($item) {
         $newQuantity = (int)readline("Enter new quantity: ");
@@ -113,7 +113,7 @@ function deleteItemById(int $id, int $userID): bool
     $deletedItemName = null;
     foreach ($items as $key => $item) {
         if ($item['id'] === $id) {
-            $deletedItemName = $item['name']; // Store the name of the item being deleted
+            $deletedItemName = $item['name'];
             unset($items[$key]);
             $itemFound = true;
             break;
