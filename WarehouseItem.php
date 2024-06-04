@@ -1,5 +1,3 @@
-<?php
-
 require 'vendor/autoload.php';
 use Carbon\Carbon;
 class WarehouseItem
@@ -9,7 +7,6 @@ class WarehouseItem
     private int $quantity;
     private Carbon $lastModified;
     private Carbon $dateCreated;
-
     public function __construct(int $quantity, string $name)
     {
         $this->name = $name;
@@ -18,7 +15,6 @@ class WarehouseItem
         $this->dateCreated = Carbon::now('UTC');
         $this->setId();
     }
-
     private function setId(): void
     {
         $items = $this->loadItems();
@@ -75,17 +71,9 @@ class WarehouseItem
     {
         return $this->lastModified;
     }
-    public function setLastModified(Carbon $lastModified): void
-    {
-        $this->lastModified = $lastModified;
-    }
     public function getDateCreated(): Carbon
     {
         return $this->dateCreated;
-    }
-    public function setDateCreated(Carbon $dateCreated): void
-    {
-        $this->dateCreated = $dateCreated;
     }
     public function toArray(): array
     {
@@ -104,6 +92,13 @@ class WarehouseItem
         if (isset($data['lastModified'])) {
             $item->lastModified = Carbon::now('UTC');
         }
+        if (isset($data['dateCreated'])) {
+            $item->dateCreated =Carbon::now('UTC');
+        }
+        return $item;
+    }
+}
+
         if (isset($data['dateCreated'])) {
             $item->dateCreated =Carbon::now('UTC');
         }
